@@ -1,3 +1,7 @@
+<?php
+
+use App\Http\Controllers\AuthController;
+
 // Authentication
 Route::get('/login', function () {
     return view('auth.login');
