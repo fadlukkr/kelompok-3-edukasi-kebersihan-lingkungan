@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
-            'email' => 'required|email|unique:Masyarakat,email',
+            'email' => 'required|email|unique:masyarakat,email',
             'password' => 'required|min:8|confirmed',
         ]);
 

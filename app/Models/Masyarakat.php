@@ -6,7 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Masyarakat extends Authenticatable
 {
-    protected $table = 'Masyarakat';
+    protected $table = 'masyarakat';
 
     protected $primaryKey = 'id_masyarakat';
 

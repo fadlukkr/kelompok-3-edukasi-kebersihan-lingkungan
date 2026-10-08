@@ -126,7 +126,7 @@
 
         <div class="register-link">
             Belum punya akun?
-            <a href="#">Daftar</a>
+            <a href="{{ route('register') }}">Daftar</a>
         </div>
 
     </div>
