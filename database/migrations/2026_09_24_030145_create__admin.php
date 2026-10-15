@@ -11,25 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-    Schema::create('admin', function (Blueprint $table) {
-        $table->id('id_admin');
+        Schema::create('admin', function (Blueprint $table) {
+            $table->id('id_admin');
 
-        $table->string('nama_admin', 100)
-            ->comment('Nama admin/pengelola');
+            $table->string('nama_admin', 100)
+                ->comment('Nama admin/pengelola');
 
-        $table->string('email', 100)
-            ->unique()
-            ->comment('Email untuk login admin (unik)');
+            $table->string('email', 100)
+                ->unique()
+                ->comment('Email untuk login admin (unik)');
 
-        $table->string('password_hash', 255)
-            ->comment('Hash password admin');
+            $table->string('password_hash', 255)
+                ->comment('Hash password admin');
 
-        $table->enum('status', ['aktif', 'tidak aktif'])
-            ->default('aktif')
-            ->comment('Status akun admin');
+            $table->enum('status', ['aktif', 'tidak aktif'])
+                ->default('aktif')
+                ->comment('Status akun admin');
 
-        $table->index('status', 'idx_admin_status');
-    });
+            $table->index('status', 'idx_admin_status');
+        });
     }
 
     /**
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_admin');
+        Schema::dropIfExists('admin');
     }
 };
