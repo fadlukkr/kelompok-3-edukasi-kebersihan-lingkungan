@@ -240,4 +240,28 @@ class EdukasiController extends Controller
                 ->with('error', 'Gagal menghapus materi: '.$e->getMessage());
         }
     }
+    public function storeApi(\Illuminate\Http\Request $request)
+    {
+        // 1. Validasi Header Bearer Token sederhana (Simulasi Keamanan)
+        if ($request->bearerToken() !== 'TOKEN-RAHASIA-123') {
+        return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
+    }
+
+        // Menyimpan data yang dikirim dari Postman ke tabel edukasi
+        $edukasi = \App\Models\Edukasi::create([
+            'judul_edukasi'  => $request->input('judul_edukasi'),
+            'isi_materi'     => $request->input('isi_materi'),
+            'id_admin'       => $request->input('id_admin', 1),
+            'tanggal_upload' => now(),
+        ]);
+
+        // Mengembalikan respons JSON sukses
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Data materi edukasi berhasil disimpan ke database.',
+            'data'    => $edukasi
+        ], 201);
+    }
 }
