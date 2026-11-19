@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $edukasi->judul_edukasi }} - EcoLearn</title>
-    <style>
+    <style nonce="{{ $cspNonce ?? '' }}">
         * {
             box-sizing: border-box;
             margin: 0;
@@ -128,6 +128,9 @@
         .btn-secondary:hover {
             background: #d5d5d5;
         }
+
+        .logout-form { display: inline; }
+        .logout-btn { background: white; color: #2e7d32; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -159,7 +162,7 @@
                 <a href="{{ route('edukasi.index') }}" class="btn btn-secondary">← Kembali</a>
                 <a href="{{ route('edukasi.edit', $edukasi->id_edukasi) }}" class="btn btn-warning">Edit Materi</a>
 
-                <form action="{{ route('edukasi.destroy', $edukasi->id_edukasi) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus materi ini?');">
+                <form action="{{ route('edukasi.destroy', $edukasi->id_edukasi) }}" method="POST" data-confirm="Apakah Anda yakin ingin menghapus materi ini?">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Hapus Materi</button>
@@ -168,5 +171,13 @@
         </div>
     </div>
 
+    <script nonce="{{ $cspNonce ?? '' }}">
+        document.addEventListener('submit', function(e) {
+            const form = e.target.closest('[data-confirm]');
+            if (form && !confirm(form.dataset.confirm)) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

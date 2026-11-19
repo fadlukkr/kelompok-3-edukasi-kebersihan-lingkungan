@@ -7,8 +7,21 @@
   <title>@yield('title', 'EcoLearn') - EcoLearn</title>
   <meta name="description" content="EcoLearn adalah platform edukasi interaktif kebersihan lingkungan berbasis web.">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+  <!-- CSP Nonce Style Hook untuk Tailwind Runtime -->
+  <script nonce="{{ $cspNonce ?? '' }}">
+    const _origCreateElement = document.createElement;
+    document.createElement = function(tagName, options) {
+      const el = _origCreateElement.call(document, tagName, options);
+      if (tagName && tagName.toLowerCase() === 'style') {
+        el.setAttribute('nonce', '{{ $cspNonce ?? '' }}');
+      }
+      return el;
+    };
+  </script>
+
+  <!-- 1. Tailwind dimuat dari lokal -->
+  <script src="{{ asset('js/tailwind.js') }}"></script>
+  <script nonce="{{ $cspNonce ?? '' }}">
     tailwind.config = {
       theme: { extend: {
         colors: { forest: {
@@ -19,16 +32,18 @@
       }}
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    body { font-family: 'Inter', sans-serif; }
+  <!-- 2. Lucide Icons dimuat dari lokal -->
+  <script src="{{ asset('js/lucide.min.js') }}"></script>
+
+  <style nonce="{{ $cspNonce ?? '' }}">
+    body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     .toast-animate { animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .toast-leave { animation: slideIn 0.3s reverse forwards !important; }
     @keyframes slideIn {
       from { transform: translateY(100%) scale(0.9); opacity: 0; }
       to   { transform: translateY(0) scale(1); opacity: 1; }
@@ -54,7 +69,7 @@
     </div>
   </footer>
 
-  <script>
+  <script nonce="{{ $cspNonce ?? '' }}">
     function showToast(message, type = 'success') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
@@ -67,7 +82,7 @@
       container.appendChild(toast);
       lucide.createIcons();
       setTimeout(() => {
-        toast.style.animation = 'slideIn 0.3s reverse forwards';
+        toast.classList.add('toast-leave');
         setTimeout(() => toast.remove(), 300);
       }, 3500);
     }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Materi Edukasi - EcoLearn</title>
-    <style>
+    <style nonce="{{ $cspNonce ?? '' }}">
         * {
             box-sizing: border-box;
             margin: 0;
@@ -194,6 +194,17 @@
             display: flex;
             justify-content: center;
         }
+
+        .col-no { width: 50px; }
+        .col-title { width: 250px; }
+        .col-date { width: 130px; }
+        .col-action { width: 180px; text-align: center; }
+        .text-center { text-align: center; }
+        .justify-center { justify-content: center; }
+        .mt-20 { margin-top: 20px; }
+        .header-desc { color: #666; font-size: 14px; margin-top: 4px; }
+        .logout-form { display: inline; }
+        .logout-btn { background: white; color: #2e7d32; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -224,7 +235,7 @@
         <div class="header-section">
             <div>
                 <h1>Katalog Materi Edukasi</h1>
-                <p style="color: #666; font-size: 14px; margin-top: 4px;">Kelola materi dan panduan kebersihan lingkungan untuk warga.</p>
+                <p class="header-desc">Kelola materi dan panduan kebersihan lingkungan untuk warga.</p>
             </div>
             <a href="{{ route('edukasi.create') }}" class="btn btn-primary">
                 + Tambah Materi Baru
@@ -236,11 +247,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 50px;">No</th>
-                            <th style="width: 250px;">Judul Materi</th>
+                            <th class="col-no">No</th>
+                            <th class="col-title">Judul Materi</th>
                             <th>Ringkasan Isi Materi</th>
-                            <th style="width: 130px;">Tgl Upload</th>
-                            <th style="width: 180px; text-align: center;">Aksi</th>
+                            <th class="col-date">Tgl Upload</th>
+                            <th class="col-action">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -250,13 +261,13 @@
                                 <td><strong>{{ $item->judul_edukasi }}</strong></td>
                                 <td>{{ Str::limit($item->isi_materi, 90, '...') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal_upload ?? $item->created_at)->format('d M Y') }}</td>
-                                <td style="text-align: center;">
-                                    <div class="actions" style="justify-content: center;">
+                                <td class="text-center">
+                                    <div class="actions justify-center">
                                         <a href="{{ route('edukasi.show', $item->id_edukasi) }}" class="btn btn-info btn-sm">Lihat</a>
                                         <a href="{{ route('edukasi.edit', $item->id_edukasi) }}" class="btn btn-warning btn-sm">Edit</a>
                                         
                                         <!-- Form Hapus Materi dengan Penanganan Konfirmasi -->
-                                        <form action="{{ route('edukasi.destroy', $item->id_edukasi) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus materi \'{{ addslashes($item->judul_edukasi) }}\'? Data yang dihapus tidak dapat dikembalikan.');">
+                                        <form action="{{ route('edukasi.destroy', $item->id_edukasi) }}" method="POST" data-confirm="Apakah Anda yakin ingin menghapus materi '{{ addslashes($item->judul_edukasi) }}'? Data yang dihapus tidak dapat dikembalikan.">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -275,7 +286,7 @@
                 <div class="empty-state">
                     <h3>Belum Ada Materi Edukasi</h3>
                     <p>Materi edukasi lingkungan masih kosong. Silakan tambahkan materi pertama Anda.</p>
-                    <div style="margin-top: 20px;">
+                    <div class="mt-20">
                         <a href="{{ route('edukasi.create') }}" class="btn btn-primary">+ Tambah Materi Sekarang</a>
                     </div>
                 </div>
@@ -283,5 +294,13 @@
         </div>
     </div>
 
+    <script nonce="{{ $cspNonce ?? '' }}">
+        document.addEventListener('submit', function(e) {
+            const form = e.target.closest('[data-confirm]');
+            if (form && !confirm(form.dataset.confirm)) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

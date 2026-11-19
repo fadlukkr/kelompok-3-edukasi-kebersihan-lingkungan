@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Brand -->
-        <div class="flex items-center gap-2 cursor-pointer" onclick="navigateToAdmin('dashboard')">
+        <div class="flex items-center gap-2 cursor-pointer" data-nav="dashboard">
           <div class="w-9 h-9 bg-forest-600 text-white rounded-lg flex items-center justify-center shadow-md">
             <i data-lucide="leaf" class="w-5 h-5"></i>
           </div>
@@ -17,11 +17,11 @@
 
         <!-- Navigation Links -->
         <nav class="hidden md:flex items-center space-x-1">
-          <button onclick="navigateToAdmin('dashboard')" id="nav-admin-dashboard" class="px-4 py-2 rounded-lg text-sm font-semibold text-forest-700 bg-forest-50 transition-all">Dashboard Admin</button>
-          <button onclick="navigateToAdmin('kelola-materi')" id="nav-admin-kelola-materi" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kelola Edukasi</button>
-          <button onclick="navigateToAdmin('kelola-kuis')" id="nav-admin-kelola-kuis" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kelola Kuis</button>
-          <button onclick="navigateToAdmin('verifikasi-laporan')" id="nav-admin-verifikasi-laporan" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Verifikasi Laporan</button>
-          <button onclick="navigateToAdmin('statistik')" id="nav-admin-statistik" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Statistik</button>
+          <button data-nav="dashboard" id="nav-admin-dashboard" class="px-4 py-2 rounded-lg text-sm font-semibold text-forest-700 bg-forest-50 transition-all">Dashboard Admin</button>
+          <button data-nav="kelola-materi" id="nav-admin-kelola-materi" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kelola Edukasi</button>
+          <button data-nav="kelola-kuis" id="nav-admin-kelola-kuis" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kelola Kuis</button>
+          <button data-nav="verifikasi-laporan" id="nav-admin-verifikasi-laporan" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Verifikasi Laporan</button>
+          <button data-nav="statistik" id="nav-admin-statistik" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Statistik</button>
         </nav>
 
         <!-- Profile & Logout (UC-03) -->
@@ -37,7 +37,7 @@
             </button>
           </form>
           <!-- Mobile Menu Toggle -->
-          <button onclick="toggleMobileMenu('admin-mobile-menu')" class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-all" aria-label="Menu">
+          <button data-toggle-menu="admin-mobile-menu" class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-all" aria-label="Menu">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -45,11 +45,11 @@
     </div>
     <!-- Mobile Navigation Drawer -->
     <div id="admin-mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1 shadow-inner">
-      <button onclick="navigateToAdmin('dashboard')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Dashboard Admin</button>
-      <button onclick="navigateToAdmin('kelola-materi')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kelola Edukasi</button>
-      <button onclick="navigateToAdmin('kelola-kuis')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kelola Kuis</button>
-      <button onclick="navigateToAdmin('verifikasi-laporan')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Verifikasi Laporan</button>
-      <button onclick="navigateToAdmin('statistik')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Statistik</button>
+      <button data-nav="dashboard" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Dashboard Admin</button>
+      <button data-nav="kelola-materi" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kelola Edukasi</button>
+      <button data-nav="kelola-kuis" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kelola Kuis</button>
+      <button data-nav="verifikasi-laporan" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Verifikasi Laporan</button>
+      <button data-nav="statistik" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Statistik</button>
     </div>
   </header>
 
@@ -116,7 +116,7 @@
         <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 space-y-4">
           <div class="flex justify-between items-center">
             <h3 class="font-bold text-slate-800 text-sm">Laporan Warga Perlu Tindakan</h3>
-            <button onclick="navigateToAdmin('verifikasi-laporan')" class="text-xs font-semibold text-forest-600 hover:text-forest-700">Tampilkan Semua &rarr;</button>
+            <button data-nav="verifikasi-laporan" class="text-xs font-semibold text-forest-600 hover:text-forest-700">Tampilkan Semua &rarr;</button>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs text-slate-500">
@@ -206,7 +206,7 @@
           <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Kelola Materi Edukasi</h2>
           <p class="text-sm text-slate-500 mt-1">Tambahkan topik edukasi baru, atau hapus konten materi edukasi yang sudah ada.</p>
         </div>
-        <button onclick="openMaterialModal(null)" class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 self-start">
+        <button data-open-admin-mat="" class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 self-start">
           <i data-lucide="plus" class="w-4 h-4"></i> Tambah Materi Baru
         </button>
       </div>
@@ -229,8 +229,8 @@
                   <td class="p-4 font-medium">{{ $mat->judul_edukasi }}</td>
                   <td class="p-4 text-slate-500 max-w-xs truncate">{{ Str::limit(strip_tags($mat->isi_materi), 80) }}</td>
                   <td class="p-4 text-center space-x-2 whitespace-nowrap">
-                    <button onclick="openMaterialModal({{ $mat->id_edukasi }})" class="px-2.5 py-1 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 transition-all font-semibold">Edit</button>
-                    <form action="{{ route('admin.materi.destroy', $mat->id_edukasi) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus materi edukasi ini?')">
+                    <button data-open-admin-mat="{{ $mat->id_edukasi }}" class="px-2.5 py-1 text-xs border border-slate-200 rounded-lg hover:bg-slate-100 transition-all font-semibold">Edit</button>
+                    <form action="{{ route('admin.materi.destroy', $mat->id_edukasi) }}" method="POST" class="inline" data-confirm="Apakah Anda yakin ingin menghapus materi edukasi ini?">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="px-2.5 py-1 text-xs bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-all font-semibold">Hapus</button>
@@ -257,7 +257,7 @@
           <h2 class="text-2xl font-bold text-slate-800 tracking-tight">Kelola Soal &amp; Kuis</h2>
           <p class="text-sm text-slate-500 mt-1">Lihat koleksi bank soal kuis atau tambahkan pertanyaan baru secara real-time.</p>
         </div>
-        <button onclick="openQuizModal()" class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 self-start">
+        <button data-open-admin-quiz class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all flex items-center gap-1.5 self-start">
           <i data-lucide="plus" class="w-4 h-4"></i> Tambah Soal Baru
         </button>
       </div>
@@ -301,7 +301,7 @@
                 </li>
               </ul>
             </div>
-            <form action="{{ route('admin.kuis.destroy', $q->id_soal) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pertanyaan kuis ini?')">
+            <form action="{{ route('admin.kuis.destroy', $q->id_soal) }}" method="POST" data-confirm="Apakah Anda yakin ingin menghapus pertanyaan kuis ini?">
               @csrf
               @method('DELETE')
               <button type="submit" class="px-2 py-1 bg-red-50 text-red-600 font-bold text-xs rounded-lg hover:bg-red-100 transition-all shrink-0">
@@ -385,7 +385,7 @@
                         <button type="submit" class="px-2.5 py-1 text-xs bg-amber-50 text-amber-700 rounded-lg hover:bg-amber-100 transition-all font-semibold">Kembali ke Menunggu</button>
                       </form>
                     @endif
-                    <form action="{{ route('admin.laporan.destroy', $r->id_laporan) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus laporan pengaduan warga ini?')">
+                    <form action="{{ route('admin.laporan.destroy', $r->id_laporan) }}" method="POST" class="inline" data-confirm="Apakah Anda yakin ingin menghapus laporan pengaduan warga ini?">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="px-2.5 py-1 text-xs bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-all font-semibold">Hapus</button>
@@ -427,7 +427,7 @@
                 <span id="stat-bar-pending-txt">{{ $pctPending }}% ({{ $totalPending }})</span>
               </div>
               <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                <div id="stat-bar-pending" class="h-full bg-amber-500 transition-all duration-500" style="width: {{ $pctPending }}%"></div>
+                <div id="stat-bar-pending" class="h-full bg-amber-500 transition-all duration-500"></div>
               </div>
             </div>
 
@@ -438,7 +438,7 @@
                 <span id="stat-bar-verified-txt">{{ $pctVerif }}% ({{ $totalVerifikasi }})</span>
               </div>
               <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                <div id="stat-bar-verified" class="h-full bg-emerald-500 transition-all duration-500" style="width: {{ $pctVerif }}%"></div>
+                <div id="stat-bar-verified" class="h-full bg-emerald-500 transition-all duration-500"></div>
               </div>
             </div>
 
@@ -449,7 +449,7 @@
                 <span id="stat-bar-rejected-txt">{{ $pctDitolak }}% ({{ $totalDitolak }})</span>
               </div>
               <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                <div id="stat-bar-rejected" class="h-full bg-red-500 transition-all duration-500" style="width: {{ $pctDitolak }}%"></div>
+                <div id="stat-bar-rejected" class="h-full bg-red-500 transition-all duration-500"></div>
               </div>
             </div>
           </div>
@@ -489,7 +489,7 @@
   <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full overflow-hidden border border-slate-100 animate-slideIn">
     <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
       <h3 id="modal-admin-materi-title" class="font-bold text-slate-800 text-base">Kelola Materi Edukasi</h3>
-      <button onclick="closeMaterialFormModal()" class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
+      <button data-close-admin-mat class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
     </div>
@@ -509,7 +509,7 @@
         <textarea id="admin-mat-content" name="isi_materi" required rows="6" class="w-full px-3 py-2 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-forest-500 transition-all bg-slate-50 custom-scrollbar" placeholder="Isi materi edukasi secara mendalam..."></textarea>
       </div>
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
-        <button type="button" onclick="closeMaterialFormModal()" class="px-4 py-2 border border-slate-200 text-slate-600 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all">Batal</button>
+        <button type="button" data-close-admin-mat class="px-4 py-2 border border-slate-200 text-slate-600 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all">Batal</button>
         <button type="submit" class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all">Simpan Konten</button>
       </div>
     </form>
@@ -523,7 +523,7 @@
   <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full overflow-hidden border border-slate-100 animate-slideIn">
     <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
       <h3 class="font-bold text-slate-800 text-base">Tambah Soal Baru</h3>
-      <button onclick="closeQuizModal()" class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
+      <button data-close-admin-quiz class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
     </div>
@@ -555,19 +555,27 @@
       </div>
 
       <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
-        <button type="button" onclick="closeQuizModal()" class="px-4 py-2 border border-slate-200 text-slate-600 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all">Batal</button>
+        <button type="button" data-close-admin-quiz class="px-4 py-2 border border-slate-200 text-slate-600 font-semibold text-xs rounded-xl hover:bg-slate-50 transition-all">Batal</button>
         <button type="submit" class="px-4 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all">Simpan Soal</button>
       </div>
     </form>
   </div>
 </div>
+
+@push('styles')
+<style nonce="{{ $cspNonce ?? '' }}">
+  #stat-bar-pending { width: {{ $pctPending }}%; }
+  #stat-bar-verified { width: {{ $pctVerif }}%; }
+  #stat-bar-rejected { width: {{ $pctDitolak }}%; }
+</style>
+@endpush
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="{{ $cspNonce ?? '' }}">
   const adminMaterialsData = @json($materials->keyBy('id_edukasi'));
 
-  function navigateToAdmin(page) {
+  function navigateToAdmin(page, pushHistory = true) {
     const tabs = ['dashboard', 'kelola-materi', 'kelola-kuis', 'verifikasi-laporan', 'statistik'];
 
     tabs.forEach(t => {
@@ -590,9 +598,13 @@
       mobileMenu.classList.add('hidden');
     }
 
-    const url = new URL(window.location);
-    url.searchParams.set('tab', page);
-    window.history.replaceState({}, '', url);
+    if (pushHistory) {
+      const url = new URL(window.location);
+      if (url.searchParams.get('tab') !== page) {
+        url.searchParams.set('tab', page);
+        window.history.pushState({}, '', url);
+      }
+    }
 
     lucide.createIcons();
   }
@@ -631,9 +643,67 @@
     document.getElementById('modal-admin-quiz').classList.add('hidden');
   }
 
+  // ── Event delegation: ganti semua onclick/onsubmit ──
+  document.addEventListener('click', function(e) {
+    // Navigasi tab
+    const navBtn = e.target.closest('[data-nav]');
+    if (navBtn) {
+      navigateToAdmin(navBtn.dataset.nav);
+      return;
+    }
+
+    // Buka modal edit/tambah materi (data-open-admin-mat bisa kosong atau berisi id)
+    const openMat = e.target.closest('[data-open-admin-mat]');
+    if (openMat) {
+      const id = openMat.dataset.openAdminMat;
+      openMaterialModal(id !== '' ? parseInt(id) : null);
+      return;
+    }
+
+    // Tutup modal materi
+    if (e.target.closest('[data-close-admin-mat]')) {
+      closeMaterialFormModal();
+      return;
+    }
+
+    // Buka modal kuis
+    if (e.target.closest('[data-open-admin-quiz]')) {
+      openQuizModal();
+      return;
+    }
+
+    // Tutup modal kuis
+    if (e.target.closest('[data-close-admin-quiz]')) {
+      closeQuizModal();
+      return;
+    }
+
+    // Toggle mobile menu
+    if (e.target.closest('[data-toggle-menu]')) {
+      const id = e.target.closest('[data-toggle-menu]').dataset.toggleMenu;
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+      return;
+    }
+  });
+
+  // Konfirmasi hapus (onsubmit pengganti)
+  document.addEventListener('submit', function(e) {
+    const form = e.target.closest('[data-confirm]');
+    if (form && !confirm(form.dataset.confirm)) {
+      e.preventDefault();
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab') || 'dashboard';
+    navigateToAdmin(tab, false);
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const initialTab = @json($activeTab);
-    navigateToAdmin(initialTab || 'dashboard');
+    navigateToAdmin(initialTab || 'dashboard', false);
   });
 </script>
 @endpush
