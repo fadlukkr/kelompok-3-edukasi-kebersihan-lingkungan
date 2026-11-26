@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Materi Edukasi - EcoLearn</title>
-    <style>
+    <style nonce="{{ $cspNonce ?? '' }}">
         * {
             box-sizing: border-box;
             margin: 0;
@@ -107,6 +107,10 @@
             margin-top: 30px;
         }
 
+        .req-star { color: #d32f2f; }
+        .logout-form { display: inline; }
+        .logout-btn { background: white; color: #2e7d32; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
         .btn {
             padding: 12px 24px;
             border-radius: 7px;
@@ -175,7 +179,7 @@
 
                 <!-- Input Judul Materi -->
                 <div class="form-group">
-                    <label for="judul_edukasi">Judul Materi <span style="color: #d32f2f;">*</span></label>
+                    <label for="judul_edukasi">Judul Materi <span class="req-star">*</span></label>
                     <input
                         type="text"
                         id="judul_edukasi"
@@ -192,7 +196,7 @@
 
                 <!-- Input Isi Konten Materi -->
                 <div class="form-group">
-                    <label for="isi_materi">Isi Materi Edukasi <span style="color: #d32f2f;">*</span></label>
+                    <label for="isi_materi">Isi Materi Edukasi <span class="req-star">*</span></label>
                     <textarea
                         id="isi_materi"
                         name="isi_materi"

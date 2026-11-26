@@ -11,7 +11,6 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth');
 Route::post('/edukasi', [EdukasiController::class, 'storeApi']);
 
-
 Route::get('/edukasi', function () {
     return response()->json([
         'status' => 'success',

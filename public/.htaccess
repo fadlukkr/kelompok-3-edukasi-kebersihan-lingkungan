@@ -23,3 +23,15 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<IfModule mod_headers.c>
+    Header unset X-Powered-By
+    Header always unset X-Powered-By
+    Header unset Server
+    Header always unset Server
+
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

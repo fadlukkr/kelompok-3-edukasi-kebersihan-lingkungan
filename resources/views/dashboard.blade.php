@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo & Brand -->
-        <div class="flex items-center gap-2 cursor-pointer" onclick="navigateToUser('beranda')">
+        <div class="flex items-center gap-2 cursor-pointer" data-nav="beranda">
           <div class="w-9 h-9 bg-forest-600 text-white rounded-lg flex items-center justify-center shadow-md">
             <i data-lucide="leaf" class="w-5 h-5"></i>
           </div>
@@ -17,10 +17,10 @@
 
         <!-- Navigation Links -->
         <nav class="hidden md:flex items-center space-x-1">
-          <button onclick="navigateToUser('beranda')" id="nav-user-beranda" class="px-4 py-2 rounded-lg text-sm font-semibold text-forest-700 bg-forest-50 transition-all">Beranda</button>
-          <button onclick="navigateToUser('materi')" id="nav-user-materi" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Materi Edukasi</button>
-          <button onclick="navigateToUser('kuis')" id="nav-user-kuis" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kuis Interaktif</button>
-          <button onclick="navigateToUser('laporan')" id="nav-user-laporan" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Laporan &amp; Feedback</button>
+          <button data-nav="beranda" id="nav-user-beranda" class="px-4 py-2 rounded-lg text-sm font-semibold text-forest-700 bg-forest-50 transition-all">Beranda</button>
+          <button data-nav="materi" id="nav-user-materi" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Materi Edukasi</button>
+          <button data-nav="kuis" id="nav-user-kuis" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Kuis Interaktif</button>
+          <button data-nav="laporan" id="nav-user-laporan" class="px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all">Laporan &amp; Feedback</button>
         </nav>
 
         <!-- User Info & Logout (UC-03) -->
@@ -36,7 +36,7 @@
             </button>
           </form>
           <!-- Mobile Menu Toggle -->
-          <button onclick="toggleMobileMenu('user-mobile-menu')" class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-all" aria-label="Menu">
+          <button data-toggle-menu="user-mobile-menu" class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-all" aria-label="Menu">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -44,10 +44,10 @@
     </div>
     <!-- Mobile Navigation Drawer -->
     <div id="user-mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 py-2 space-y-1 shadow-inner">
-      <button onclick="navigateToUser('beranda')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Beranda</button>
-      <button onclick="navigateToUser('materi')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Materi Edukasi</button>
-      <button onclick="navigateToUser('kuis')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kuis Interaktif</button>
-      <button onclick="navigateToUser('laporan')" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Laporan &amp; Feedback</button>
+      <button data-nav="beranda" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Beranda</button>
+      <button data-nav="materi" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Materi Edukasi</button>
+      <button data-nav="kuis" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Kuis Interaktif</button>
+      <button data-nav="laporan" class="w-full text-left px-4 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 block">Laporan &amp; Feedback</button>
     </div>
   </header>
 
@@ -71,10 +71,10 @@
           <h2 id="user-welcome-heading" class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Mulai Aksi Nyata Anda, {{ $masyarakat->nama_lengkap }}!</h2>
           <p class="text-forest-100 text-sm sm:text-base leading-relaxed mb-6">Dapatkan edukasi mendalam, uji pengetahuan Anda tentang kelestarian alam, serta laporkan pelanggaran atau masalah kebersihan lingkungan langsung di aplikasi EcoLearn.</p>
           <div class="flex flex-wrap gap-3">
-            <button onclick="navigateToUser('materi')" class="px-5 py-2.5 bg-white text-forest-800 font-semibold rounded-xl text-sm shadow hover:bg-slate-50 transition-all flex items-center gap-2">
+            <button data-nav="materi" class="px-5 py-2.5 bg-white text-forest-800 font-semibold rounded-xl text-sm shadow hover:bg-slate-50 transition-all flex items-center gap-2">
               <i data-lucide="book-open" class="w-4 h-4"></i> Pelajari Materi
             </button>
-            <button onclick="navigateToUser('kuis')" class="px-5 py-2.5 bg-forest-900 text-white font-semibold rounded-xl text-sm border border-forest-600 hover:bg-forest-950 transition-all flex items-center gap-2">
+            <button data-nav="kuis" class="px-5 py-2.5 bg-forest-900 text-white font-semibold rounded-xl text-sm border border-forest-600 hover:bg-forest-950 transition-all flex items-center gap-2">
               <i data-lucide="award" class="w-4 h-4"></i> Ikuti Kuis
             </button>
           </div>
@@ -124,7 +124,7 @@
           <h3 class="font-bold text-forest-800 text-lg">Mengapa Memilah Sampah itu Penting?</h3>
           <p class="text-xs text-forest-600 max-w-xl">Memilah sampah organik dan anorganik dari rumah dapat mempermudah proses daur ulang dan mencegah pencemaran tanah dan sumber air di sekitar pemukiman.</p>
         </div>
-        <button onclick="navigateToUser('materi')" class="px-5 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all shrink-0">Pelajari Selengkapnya</button>
+        <button data-nav="materi" class="px-5 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all shrink-0">Pelajari Selengkapnya</button>
       </div>
     </div>
 
@@ -146,7 +146,7 @@
               <h3 class="font-bold text-slate-800 text-base leading-snug">{{ $mat->judul_edukasi }}</h3>
               <p class="text-xs text-slate-500 leading-relaxed">{{ Str::limit(strip_tags($mat->isi_materi), 120) }}</p>
             </div>
-            <button onclick="openMaterialModalView({{ $mat->id_edukasi }})" class="mt-5 w-full py-2 bg-slate-50 hover:bg-forest-50 hover:text-forest-700 text-slate-700 font-semibold text-xs rounded-xl border border-slate-100 hover:border-forest-200 transition-all flex items-center justify-center gap-1">
+            <button data-open-mat="{{ $mat->id_edukasi }}" class="mt-5 w-full py-2 bg-slate-50 hover:bg-forest-50 hover:text-forest-700 text-slate-700 font-semibold text-xs rounded-xl border border-slate-100 hover:border-forest-200 transition-all flex items-center justify-center gap-1">
               <span>Baca Selengkapnya</span>
               <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
             </button>
@@ -394,7 +394,7 @@
         <span id="modal-materi-category" class="text-[10px] uppercase font-bold text-forest-600 tracking-wider bg-forest-100 px-2.5 py-0.5 rounded-full">Kategori</span>
         <h3 id="modal-materi-title" class="font-bold text-slate-800 text-lg mt-2">Judul Materi</h3>
       </div>
-      <button onclick="closeMaterialModalView()" class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
+      <button data-close-mat class="p-1 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all" aria-label="Tutup">
         <i data-lucide="x" class="w-6 h-6"></i>
       </button>
     </div>
@@ -404,18 +404,18 @@
     </div>
     <!-- Modal Footer -->
     <div class="p-4 border-t border-slate-100 bg-slate-50 flex justify-end">
-      <button onclick="closeMaterialModalView()" class="px-5 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all">Selesai Membaca</button>
+      <button data-close-mat class="px-5 py-2 bg-forest-600 hover:bg-forest-700 text-white font-semibold text-xs rounded-xl shadow-md transition-all">Selesai Membaca</button>
     </div>
   </div>
 </div>
 @endsection
 
 @push('scripts')
-<script>
+<script nonce="{{ $cspNonce ?? '' }}">
   // Materi data store for interactive popup
   const materialsData = @json($materiList->keyBy('id_edukasi'));
 
-  function navigateToUser(page) {
+  function navigateToUser(page, pushHistory = true) {
     const tabs = ['beranda', 'materi', 'kuis', 'laporan'];
 
     tabs.forEach(t => {
@@ -438,10 +438,13 @@
       mobileMenu.classList.add('hidden');
     }
 
-    // Update URL query string without reloading page
-    const url = new URL(window.location);
-    url.searchParams.set('tab', page);
-    window.history.replaceState({}, '', url);
+    if (pushHistory) {
+      const url = new URL(window.location);
+      if (url.searchParams.get('tab') !== page) {
+        url.searchParams.set('tab', page);
+        window.history.pushState({}, '', url);
+      }
+    }
 
     lucide.createIcons();
   }
@@ -455,7 +458,13 @@
 
     const body = document.getElementById('modal-materi-content');
     const content = mat.isi_materi || '';
-    body.innerHTML = content.split('\n\n').map(p => `<p class="mb-3">${p.replace(/\n/g, '<br>')}</p>`).join('');
+    body.textContent = '';
+    content.split('\n\n').forEach(p => {
+      const para = document.createElement('p');
+      para.className = 'mb-3';
+      para.textContent = p;
+      body.appendChild(para);
+    });
 
     document.getElementById('modal-view-materi').classList.remove('hidden');
     lucide.createIcons();
@@ -465,10 +474,55 @@
     document.getElementById('modal-view-materi').classList.add('hidden');
   }
 
+  // ── Event delegation: ganti semua onclick/onsubmit ──
+  document.addEventListener('click', function(e) {
+    // Navigasi tab
+    const navBtn = e.target.closest('[data-nav]');
+    if (navBtn) {
+      navigateToUser(navBtn.dataset.nav);
+      return;
+    }
+
+    // Buka modal materi
+    const openMat = e.target.closest('[data-open-mat]');
+    if (openMat) {
+      openMaterialModalView(openMat.dataset.openMat);
+      return;
+    }
+
+    // Tutup modal materi
+    if (e.target.closest('[data-close-mat]')) {
+      closeMaterialModalView();
+      return;
+    }
+
+    // Toggle mobile menu
+    if (e.target.closest('[data-toggle-menu]')) {
+      const id = e.target.closest('[data-toggle-menu]').dataset.toggleMenu;
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+      return;
+    }
+  });
+
+  // Konfirmasi hapus (onsubmit pengganti)
+  document.addEventListener('submit', function(e) {
+    const form = e.target.closest('[data-confirm]');
+    if (form && !confirm(form.dataset.confirm)) {
+      e.preventDefault();
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab') || 'beranda';
+    navigateToUser(tab, false);
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     // Open initial tab from server or URL query
     const initialTab = @json($activeTab);
-    navigateToUser(initialTab || 'beranda');
+    navigateToUser(initialTab || 'beranda', false);
   });
 </script>
 @endpush

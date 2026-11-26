@@ -1,6 +1,6 @@
-<form action="{{ route('logout') }}" method="POST" style="display:inline;">
+<form action="{{ route('logout') }}" method="POST" class="logout-form">
     @csrf
-    <button type="submit" style="background:white;color:#2e7d32;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:bold;">
+    <button type="submit" class="logout-btn">
         Logout
     </button>
 </form>
