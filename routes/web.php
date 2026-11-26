@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -42,3 +43,8 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 // ---------- Materi Edukasi (khusus admin) ----------
 Route::resource('edukasi', EdukasiController::class)->middleware('auth:admin');
 Route::redirect('/materi', '/edukasi');
+
+// ---------- Export PDF ----------
+Route::get('/export-pdf', [LaporanController::class, 'exportPdf'])
+    ->middleware('auth:admin')
+    ->name('export.pdf');

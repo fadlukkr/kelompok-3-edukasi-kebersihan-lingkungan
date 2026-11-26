@@ -39,6 +39,7 @@ class AuthController extends Controller
             ->with('success', 'Registrasi berhasil! Selamat datang '.$masyarakat->nama_lengkap);
     }
 
+
     // LOGIN (Admin dulu, lalu Masyarakat)
     public function login(Request $request): RedirectResponse
     {
